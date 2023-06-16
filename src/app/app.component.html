@@ -1,0 +1,11 @@
+<ng-container [ngSwitch]="layoutService.layout()">
+  <app-layout-admin *ngSwitchCase="Layout.ADMIN">
+    <router-outlet></router-outlet>
+  </app-layout-admin>
+  <app-layout-auth *ngSwitchCase="Layout.AUTH">
+    <router-outlet></router-outlet>
+  </app-layout-auth>
+  <app-layout-default *ngSwitchDefault>
+    <router-outlet></router-outlet>
+  </app-layout-default>
+</ng-container>
