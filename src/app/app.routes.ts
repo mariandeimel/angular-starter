@@ -1,25 +1,32 @@
-import { Routes } from '@angular/router';
-import { NotFoundComponent } from '@core/components/not-found/not-found.component';
-import { Layout } from '@core/enums/layout';
-import { setLayout } from '@core/resolvers/layout.resolver';
+import { Routes } from '@angular/router'
+import { DashboardComponent } from '@core/components/dashboard/dashboard.component'
+import { NotFoundComponent } from '@core/components/not-found/not-found.component'
+import { Layout } from '@core/enums/layout'
+import { appGuard } from '@core/guards/app.guard'
+import { authGuard } from '@core/guards/auth.guard'
+import { setLayout } from '@core/resolvers/layout.resolver'
 
-export const routes: Routes = [
+
+export const APP_ROUTES: Routes = [
   {
     path: '',
+    redirectTo: 'dashboard',
     pathMatch: 'full',
-    redirectTo: 'admin'
   },
   {
-    path: 'admin',
-    title: 'Admin',
+    path: 'dashboard',
+    title: 'Dashboard',
     resolve: { layout: setLayout(Layout.ADMIN) },
-    loadComponent: () => import('./modules/admin/admin.component').then(m => m.AdminComponent),
+    data: { breadcrumb: 'Dashboard' },
+    component: DashboardComponent,
+    canActivate: [appGuard]
   },
   {
-    path: 'login',
-    title: 'Login',
+    path: 'auth',
+    title: 'Authentication',
     resolve: { layout: setLayout(Layout.AUTH) },
-    loadComponent: () => import('./modules/auth/login/login.component').then(m => m.LoginComponent),
+    loadChildren: () => import('./features/auth/auth.routes').then(m => m.AUTH_ROUTES),
+    canActivate: [authGuard]
   },
   {
     path: '**',
@@ -27,4 +34,4 @@ export const routes: Routes = [
     resolve: { layout: setLayout(Layout.DEFAULT) },
     loadComponent: () => NotFoundComponent,
   },
-];
+]

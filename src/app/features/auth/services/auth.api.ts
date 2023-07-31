@@ -14,10 +14,10 @@ export class AuthApi {
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<User> {
-    return this.http.post(`${this.apiUrl}/json-login`, { username: email, password: password }, { withCredentials: true }).pipe(map((response: any) => response as User))
+    return this.http.post(`${this.apiUrl}/login`, { username: email, password: password }, { withCredentials: true }).pipe(map((response: any) => response as User))
   }
 
   getUser(): Observable<User> {
-    return this.http.get(`${this.apiUrl}/get-user`, { withCredentials: true }).pipe(map((response: any) => response as User))
+    return this.http.get(`${this.apiUrl}/user`, { withCredentials: true }).pipe(map((response: any) => response as User))
   }
 }
