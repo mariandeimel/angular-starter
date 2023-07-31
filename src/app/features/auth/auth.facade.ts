@@ -10,7 +10,8 @@ import { User } from './interfaces/user';
 @Injectable({ providedIn: 'root' })
 export class AuthFacade {
 
-  public readonly LOGIN_PATH = 'auth/login';
+  public readonly LOGIN_PATH = '/auth/login'
+  public readonly ACCESS_DENIED_PATH = '/access-denied'
 
   constructor(private api: AuthApi, private state: AuthState, private router: Router) { }
 
@@ -26,6 +27,24 @@ export class AuthFacade {
       next: (response: User) => {
         this.state.setUser(response)
         this.router.navigate([''])
+      },
+      error: error => {
+        this.state.error.set(error.error.message)
+      },
+    })
+  }
+
+  
+  getCsrfToken(): void {
+    this.state.loading.set(true)
+
+    this.api.getCsrfToken().pipe(
+      finalize(() => {
+        this.state.loading.set(false)
+      })
+    ).subscribe({
+      next: (response: any) => {
+        console.log(response)
       },
       error: error => {
         this.state.error.set(error.error.message)

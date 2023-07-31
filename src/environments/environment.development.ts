@@ -1,3 +1,4 @@
 export const environment = {
-  apiUrl: 'http://localhost/api'
+  apiUrl: 'http://localhost/api',
+  sanctumUrl: 'http://localhost/sanctum'
 }

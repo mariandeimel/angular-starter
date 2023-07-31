@@ -10,11 +10,16 @@ import { User } from '../interfaces/user';
 export class AuthApi {
 
   apiUrl = environment.apiUrl
+  sanctumUrl = environment.sanctumUrl
 
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<User> {
     return this.http.post(`${this.apiUrl}/login`, { username: email, password: password }, { withCredentials: true }).pipe(map((response: any) => response as User))
+  }
+
+  getCsrfToken(): Observable<any> {
+    return this.http.get(`${this.sanctumUrl}/csrf-token`)
   }
 
   getUser(): Observable<User> {

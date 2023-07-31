@@ -17,16 +17,19 @@ export class ErrorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
-      
+
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
           // handle 401 errors (unauthorized)
           this.auth.removeCurrentUser()
-          // implement this method in AuthService
-          this.router.navigate(['/auth/login'])
+          
+          if (window.location.pathname !== this.auth.LOGIN_PATH) {
+            // implement this method in AuthService
+            this.router.navigate([this.auth.LOGIN_PATH])
+          }
         } else if (error.status === 403) {
           // handle 403 errors (forbidden)
-          this.router.navigate(['/access-denied'])
+          this.router.navigate([this.auth.ACCESS_DENIED_PATH])
         }
         // If it's not a 401 or 403 error, just throw it again
         return throwError(() => error)

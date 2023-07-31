@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 import { ApiOptions } from '@core/interfaces/api-options'
 import { PaginatedResult } from '@core/interfaces/paginated-result'
 import { environment } from '@environment/environment.development'
@@ -10,8 +10,6 @@ export abstract class ApiService<T> {
   abstract readonly endpoint: string
   private readonly apiUrl = environment.apiUrl
   readonly includeEntities = 'includeEntities'
-  readonly headers = new HttpHeaders().set('Content-Type', 'application/ld+json')
-
 
   get url(): string {
     return `${this.apiUrl}/${this.endpoint}`
@@ -24,7 +22,7 @@ export abstract class ApiService<T> {
     let query = ''
 
     if (options.page) query += `page=${options.page}&`
-    if (options.itemsPerPage) query += `itemsPerPage=${options.itemsPerPage}&`
+    if (options.itemsPerPage) query += `pageSize=${options.itemsPerPage}&`
 
     if (options.order) {
       for (let field in options.order) {
@@ -38,7 +36,7 @@ export abstract class ApiService<T> {
       }
     }
 
-    return this.http.get(`${this.url}/${this.includeEntities}/?${query}`, { withCredentials: true, headers: this.headers }).pipe(
+    return this.http.get(`${this.url}/${this.includeEntities}/?${query}`).pipe(
       map((response: any) => {
         return {
           items: response['hydra:member'] as T[],
@@ -50,28 +48,28 @@ export abstract class ApiService<T> {
 
   show(id: number, includeEntities = false): Observable<T> {
     const url = includeEntities ? `${this.url}/${id}/${this.includeEntities}` : `${this.url}/${id}`;
-    return this.http.get(url, { withCredentials: true, headers: this.headers }).pipe(
+    return this.http.get(url).pipe(
       map(response => response as T),
     )
   }
 
   create(data: T, includeEntities = false): Observable<T> {
     const url = includeEntities ? `${this.url}/${this.includeEntities}` : this.url;
-    return this.http.post(url, data, { withCredentials: true, headers: this.headers }).pipe(
+    return this.http.post(url, data).pipe(
       map(response => response as T),
     )
   }
 
   update(id: number, data: T, includeEntities = false): Observable<T> {
     const url = includeEntities ? `${this.url}/${id}/${this.includeEntities}` : `${this.url}/${id}`;
-    return this.http.put(url, data, { withCredentials: true, headers: this.headers }).pipe(
+    return this.http.put(url, data).pipe(
       map(response => response as T),
     )
   }
 
   delete(id: number, includeEntities = false): Observable<any> {
     const url = includeEntities ? `${this.url}/${id}/${this.includeEntities}` : `${this.url}/${id}`;
-    return this.http.delete(url, { withCredentials: true, headers: this.headers }).pipe(
+    return this.http.delete(url).pipe(
       map(response => response as any),
     )
   }
