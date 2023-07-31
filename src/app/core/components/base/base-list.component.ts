@@ -38,7 +38,7 @@ export abstract class BaseListComponent<T extends Identifiable> implements OnIni
 
   onPageChange = (page: number): void => this.apiOptions.mutate((options) => options.page = page)
 
-  onSearch = (search: string): void => this.apiOptions.mutate((options) => options.filter = { name: search })
+  onSearch = (search: string): void => this.apiOptions.mutate((options) => options.search = search)
 
   onSort = (sort: Sort): void => this.apiOptions.mutate((options) => options.order = { [sort.active]: sort.direction })
 }

@@ -5,4 +5,5 @@ export interface ApiOptions {
   itemsPerPage: number
   order?: { [key: string]: SortDirection }
   filter?: { [key: string]: any }
+  search?: string
 }
