@@ -1,0 +1,12 @@
+<nav class="ml-4 flex justify-between" aria-label="Breadcrumb">
+  <ol class="inline-flex items-center">
+    <li *ngFor="let breadcrumb of (breadcrumbs$ | async); let last = last">
+      <div class="flex items-center">
+        <a [routerLink]="breadcrumb.url" class="inline-flex items-center px-3 py-2 text-center rounded-md bg--contrast-lightest bg--hover-contrast-lighter text--hover-highlight cursor-pointer">
+          {{breadcrumb.title}}
+        </a>
+        <span class="mx-2 text-zinc-500 font-medium" *ngIf="!last">/</span>
+      </div>
+    </li>
+  </ol>
+</nav>

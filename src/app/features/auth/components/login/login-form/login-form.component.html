@@ -1,0 +1,10 @@
+<form [formGroup]="form" class="flex flex-col">
+
+  <app-input-field class="mb-6" formControlName="email" id="email" type="email" placeholder="Email Address"></app-input-field>
+
+  <app-input-field class="mb-6" formControlName="password" id="password" [type]="hidePassword() ? 'password' : 'text'" placeholder="Password" [showIcon]="true">
+    <i (click)="hidePassword.set(!hidePassword())" class="fas {{iconClass()}} flex items-center justify-center w-6 h-6 transition duration-75 text--backdrop group-hover:text-zinc-950 dark:group-hover:text-zinc-50"></i>
+  </app-input-field>
+
+  <app-button-gradient-outline [stretch]="true" [loading]="loading" (clickEvent)="submit()">Continue with credentials</app-button-gradient-outline>
+</form>

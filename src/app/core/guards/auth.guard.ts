@@ -1,11 +1,10 @@
 import { inject } from '@angular/core'
 import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router'
-import { AuthService } from '@core/services/auth.service'
+import { AuthFacade } from '@features/auth/auth.facade'
+import { map, catchError, of } from 'rxjs'
 
-export function authGuardFn({ redirectTo }: { redirectTo: any[] }): CanActivateFn {
-    return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-        return inject(AuthService).isAuthenticated()
-            ? true
-            : inject(Router).createUrlTree(redirectTo, { queryParams: { returnUrl: state.url } })
-    }
+export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+  const authFacade = inject(AuthFacade)
+  const router = inject(Router)
+  return authFacade.isLoggedIn$().pipe(map(isLoggedIn => !isLoggedIn ? true : router.createUrlTree([''])), catchError(() => of(true)))
 }

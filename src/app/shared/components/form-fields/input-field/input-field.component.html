@@ -1,0 +1,11 @@
+<div class="relative group">
+
+  <div *ngIf="showIcon" class="absolute flex items-center pl-3 cursor-pointer end-2 inset-y-0 ">
+    <ng-content></ng-content>
+  </div>
+
+  <input #inputField
+    class="text-sm bg-white dark:bg-zinc-950 border border--zinc text--contrast-light rounded-md block w-full p-2.5 dark:placeholder-zinc-500 placeholder-zinc-500"
+    name="{{id}}" type="{{type}}" [value]="value" [placeholder]="placeholder" [autocomplete]="autocomplete"
+    [disabled]="disabled" (input)="onChange(inputField.value)">
+</div>

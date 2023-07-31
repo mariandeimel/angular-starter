@@ -1,0 +1,31 @@
+<div class="relative overflow-x-auto shadow-md rounded-md border border--zinc">
+  <table matSort class="w-full text-left text--primary table-auto" (matSortChange)="onSort($event)">
+
+    <thead class="bg--contrast-lightest border-b border--zinc">
+      <tr>
+        <th scope="col" class="p-4">
+          <app-checkbox class="flex items-center" identifier="select-all" [checked]="allSelected()"
+            (valueChangeEvent)="selectAll($event)"></app-checkbox>
+        </th>
+        <th scope="col" class="px-6 py-4 font-medium" *ngFor="let item of config" [mat-sort-header]="item.property">
+          {{ item.name }}
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of data"
+        class="border-b last:border-b-0 border--zinc hover:bg-zinc-100 dark:hover:bg-zinc-900">
+        <td class="w-4 p-4">
+          <app-checkbox class="flex items-center" [identifier]="item['id']" [checked]="selectedItems()[item.id]"
+            (valueChangeEvent)="selectItem($event, item['id'])"></app-checkbox>
+        </td>
+        <td *ngFor="let column of config" class="px-6 py-4"
+          [innerHTML]="column.format ? column.format(item[column.property]) : item[column.property]"
+          (click)="navigateToItem(item.id)">
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>

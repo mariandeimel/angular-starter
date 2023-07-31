@@ -7,7 +7,7 @@ import { Layout } from '@core/enums/layout';
 export class LayoutService {
 
   layout = signal(Layout.DEFAULT);
-  
+
   setLayout(layout: Layout) {
     this.layout.set(layout);
   }
