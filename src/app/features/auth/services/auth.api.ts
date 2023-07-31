@@ -15,7 +15,7 @@ export class AuthApi {
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<User> {
-    return this.http.post(`${this.apiUrl}/login`, { username: email, password: password }, { withCredentials: true }).pipe(map((response: any) => response as User))
+    return this.http.post(`${this.apiUrl}/login`, { username: email, password: password }).pipe(map((response: any) => response as User))
   }
 
   getCsrfToken(): Observable<any> {
@@ -23,6 +23,6 @@ export class AuthApi {
   }
 
   getUser(): Observable<User> {
-    return this.http.get(`${this.apiUrl}/user`, { withCredentials: true }).pipe(map((response: any) => response as User))
+    return this.http.get(`${this.apiUrl}/user`).pipe(map((response: any) => response as User))
   }
 }
