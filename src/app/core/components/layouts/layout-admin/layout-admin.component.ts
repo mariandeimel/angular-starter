@@ -27,4 +27,9 @@ export class LayoutAdminComponent {
   logout() {
     this.auth.logout()
   }
+
+  closedSidebar() {
+    this.sidebarVisible.set(false)
+  }
 }
+

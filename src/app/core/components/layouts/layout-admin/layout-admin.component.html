@@ -1,5 +1,5 @@
 <mat-drawer-container class="h-full" autosize>
-  <mat-drawer #drawer [mode]="drawerMode()">
+  <mat-drawer #drawer [mode]="drawerMode()" (closedStart)="this.closedSidebar()">
     <app-sidebar (logoutEvent)="logout()"></app-sidebar>
   </mat-drawer>
   <mat-drawer-content class="bg--primary text--primary">
