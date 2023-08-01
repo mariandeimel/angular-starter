@@ -6,6 +6,7 @@ import { Layout } from '@core/enums/layout';
 import { LayoutAdminComponent } from '@core/components/layouts/layout-admin/layout-admin.component';
 import { LayoutDefaultComponent } from '@core/components/layouts/layout-default/layout-default.component';
 import { LayoutAuthComponent } from '@core/components/layouts/layout-auth/layout-auth.component';
+import { BreadcrumbService } from '@core/services/breadcrumb.service';
 
 @Component({
   selector: 'app-root',
@@ -16,5 +17,5 @@ import { LayoutAuthComponent } from '@core/components/layouts/layout-auth/layout
 })
 export class AppComponent {
   readonly Layout = Layout
-  constructor(public layoutService: LayoutService) {}
+  constructor(public layoutService: LayoutService, private breadcrumbService: BreadcrumbService) { }
 }
