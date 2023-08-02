@@ -7,5 +7,5 @@
   <input #inputField
     class="text-sm bg-white dark:bg-zinc-950 border border--zinc text--contrast-light rounded-md block w-full p-2.5 dark:placeholder-zinc-500 placeholder-zinc-500"
     name="{{id}}" type="{{type}}" [value]="value" [placeholder]="placeholder" [autocomplete]="autocomplete"
-    [disabled]="disabled" (input)="onChange(inputField.value)">
+    [disabled]="disabled" (input)="onInput(inputField.value)">
 </div>

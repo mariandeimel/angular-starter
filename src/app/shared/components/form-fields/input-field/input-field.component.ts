@@ -22,6 +22,8 @@ export class InputFieldComponent {
   @Input() disabled: boolean = false
   @Input() autocomplete: boolean = true
 
+  @Output() typing = new EventEmitter<string>()
+
   value: string = ''
 
   // Function to call when the input changes.
@@ -45,5 +47,11 @@ export class InputFieldComponent {
   // We'll call this function when the input element loses focus (on blur).
   registerOnTouched(fn: () => void): void {
     this.onTouched = fn
+  }
+
+  onInput(value: string) {
+    this.value = value
+    this.onChange(value)
+    this.typing.emit(value)
   }
 }
