@@ -18,25 +18,27 @@ export abstract class ApiService<T> {
   constructor(public http: HttpClient) { }
 
   index(options: ApiOptions): Observable<PaginatedResult<T>> {
+    let queryParts = []
 
-    let query = ''
-
-    if (options.page) query += `page=${options.page}&`
-    if (options.itemsPerPage) query += `pageSize=${options.itemsPerPage}&`
+    if (options.page) queryParts.push(`page=${options.page}`)
+    if (options.itemsPerPage) queryParts.push(`pageSize=${options.itemsPerPage}`)
+    if (options.search) queryParts.push(`search=${encodeURIComponent(options.search)}`)
 
     if (options.order) {
       for (let field in options.order) {
-        query += `order[${field}]=${options.order[field]}&`
+        queryParts.push(`order[${field}]=${options.order[field]}`)
       }
     }
 
     if (options.filter) {
       for (let field in options.filter) {
-        query += `${field}=${options.filter[field]}&`
+        queryParts.push(`${field}=${options.filter[field]}`)
       }
     }
 
-    return this.http.get(`${this.url}/${this.includeEntities}/?${query}`).pipe(
+    let query = queryParts.join('&')
+
+    return this.http.get(`${this.url}/?${query}`).pipe(
       map((response: any) => {
         return {
           items: response['hydra:member'] as T[],
@@ -46,30 +48,26 @@ export abstract class ApiService<T> {
     )
   }
 
-  show(id: number, includeEntities = false): Observable<T> {
-    const url = includeEntities ? `${this.url}/${id}/${this.includeEntities}` : `${this.url}/${id}`;
-    return this.http.get(url).pipe(
+  show(id: number): Observable<T> {
+    return this.http.get(`${this.url}/${id}`).pipe(
       map(response => response as T),
     )
   }
 
-  create(data: T, includeEntities = false): Observable<T> {
-    const url = includeEntities ? `${this.url}/${this.includeEntities}` : this.url;
-    return this.http.post(url, data).pipe(
+  create(data: T): Observable<T> {
+    return this.http.post(this.url, data).pipe(
       map(response => response as T),
     )
   }
 
-  update(id: number, data: T, includeEntities = false): Observable<T> {
-    const url = includeEntities ? `${this.url}/${id}/${this.includeEntities}` : `${this.url}/${id}`;
-    return this.http.put(url, data).pipe(
+  update(id: number, data: T): Observable<T> {
+    return this.http.put(`${this.url}/${id}`, data).pipe(
       map(response => response as T),
     )
   }
 
-  delete(id: number, includeEntities = false): Observable<any> {
-    const url = includeEntities ? `${this.url}/${id}/${this.includeEntities}` : `${this.url}/${id}`;
-    return this.http.delete(url).pipe(
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${this.url}/${id}`).pipe(
       map(response => response as any),
     )
   }
