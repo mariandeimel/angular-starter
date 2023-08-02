@@ -41,8 +41,8 @@ export abstract class ApiService<T> {
     return this.http.get(`${this.url}/?${query}`).pipe(
       map((response: any) => {
         return {
-          items: response['hydra:member'] as T[],
-          totalCount: response['hydra:totalItems'] as number
+          items: response['member'] as T[],
+          totalCount: response['totalItems'] as number
         }
       }),
     )
