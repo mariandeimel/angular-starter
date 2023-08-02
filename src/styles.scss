@@ -47,72 +47,72 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
 .disabled {
-  @apply disabled: opacity-50;
-  @apply disabled: cursor-not-allowed;
+  @apply disabled:opacity-50;
+  @apply disabled:cursor-not-allowed;
 }
 
 .bg--primary {
   @apply bg-zinc-50;
-  @apply dark: bg-zinc-950;
+  @apply dark:bg-zinc-950;
 }
 
 .bg--contrast-lightest {
   @apply bg-zinc-100;
-  @apply dark: bg-zinc-900;
+  @apply dark:bg-zinc-900;
 }
 
 .bg--contrast-lighter {
   @apply bg-zinc-200;
-  @apply dark: bg-zinc-800;
+  @apply dark:bg-zinc-800;
 }
 
 .bg--contrast-light {
   @apply bg-zinc-300;
-  @apply dark: bg-zinc-700;
+  @apply dark:bg-zinc-700;
 }
 
 .border--zinc {
   @apply border-zinc-300;
-  @apply dark: border-zinc-700;
+  @apply dark:border-zinc-700;
 }
-
 
 .text--primary {
   @apply text-zinc-700;
-  @apply dark: text-zinc-300;
+  @apply dark:text-zinc-300;
 }
 
 .text--constrast-lightest {
   @apply text-zinc-800;
-  @apply dark: text-zinc-200;
+  @apply dark:text-zinc-200;
 }
 
 .text--contrast-lighter {
   @apply text-zinc-900;
-  @apply dark: text-zinc-100;
+  @apply dark:text-zinc-100;
 }
 
 .text--contrast-light {
   @apply text-zinc-950;
-  @apply dark: text-zinc-50;
+  @apply dark:text-zinc-50;
 }
 
 .text--backdrop {
   @apply text-zinc-500;
-  @apply dark: text-zinc-500;
+  @apply dark:text-zinc-500;
 }
 
 .text--hover-highlight {
-  @apply hover: text-zinc-950;
-  @apply dark: hover:text-zinc-50;
+  @apply hover:text-zinc-950;
+  @apply dark:hover:text-zinc-50;
 }
 
 .bg--hover-contrast-lighter {
-  @apply hover: bg-zinc-200;
-  @apply dark: hover:bg-zinc-800;
-}
-
-* {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  @apply hover:bg-zinc-200;
+  @apply dark:hover:bg-zinc-800;
 }
