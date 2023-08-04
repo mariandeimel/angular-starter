@@ -12,7 +12,7 @@ export class DetailFacadeService<T extends Identifiable> {
   show(id: number) {
     this.state.loading.set(true)
 
-    this.api.show(id, true).pipe(
+    this.api.show(id).pipe(
       finalize(() => {
         this.state.loading.set(false)
       })
@@ -29,7 +29,7 @@ export class DetailFacadeService<T extends Identifiable> {
   update(item: T) {
     this.state.loading.set(true)
 
-    this.api.update(item.id, item, true).pipe(
+    this.api.update(item.id, item).pipe(
       finalize(() => {
         this.state.loading.set(false)
       })
