@@ -2,15 +2,17 @@
 
   <div class="flex space-x-2">
 
-    <app-input-field class="sm:w-80" [showIcon]="true" placeholder="Search ..." (typing)="onInputChange($event)">
-      <i class="fas fa-magnifying-glass flex items-center justify-center w-6 h-6 transition duration-75 text-zinc-400 dark:text-zinc-400 group-hover:text-zinc-950 dark:group-hover:text-zinc-50"></i>
+    <app-input-field class="sm:w-80" [showIcon]="true" placeholder="Suchen ..." (typing)="onInputChange($event)">
+      <i
+        class="fas fa-magnifying-glass flex items-center justify-center w-6 h-6 transition duration-75 text-zinc-400 group-hover:text-zinc-950"></i>
     </app-input-field>
 
     <app-default-button [type]="'secondary'">Filter</app-default-button>
   </div>
 
   <div class="space-x-2">
-    <app-default-button [type]="'warn'">Delete</app-default-button>
-    <app-default-button [type]="'primary'">New</app-default-button>
+    <app-default-button *ngIf="!disabledDelete" [disabled]="disabledDelete" [type]="'warn'"
+      (clickEvent)="onRemoveClick()">Löschen</app-default-button>
+    <app-default-button [type]="'primary'" (clickEvent)="onAddClick()">Hinzufügen</app-default-button>
   </div>
 </div>

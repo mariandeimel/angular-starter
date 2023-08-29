@@ -9,12 +9,13 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
   templateUrl: './input-field.component.html',
   styleUrls: ['./input-field.component.scss'],
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => InputFieldComponent), multi: true }],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputFieldComponent {
   @Input() id: string = ''
   @Input() placeholder: string = ''
   @Input() type: string = 'text'
+  @Input() step: string | null = null
+  @Input() list: string | null = null
 
   @Input() showIcon: boolean = false
   @Input() direction: string = 'right'
@@ -23,8 +24,11 @@ export class InputFieldComponent {
   @Input() autocomplete: boolean = true
 
   @Output() typing = new EventEmitter<string>()
+  @Output() blurEvent = new EventEmitter<void>()
+  @Output() focusEvent = new EventEmitter<void>()
 
-  value: string = ''
+
+  @Input() value: string | number | undefined = ''
 
   // Function to call when the input changes.
   onChange = (value: string) => { }
@@ -52,6 +56,12 @@ export class InputFieldComponent {
   onInput(value: string) {
     this.value = value
     this.onChange(value)
+    this.onTouched()
     this.typing.emit(value)
   }
+
+  setDisabledState(isDisabled: boolean): void {
+    this.disabled = isDisabled
+  }
 }
+

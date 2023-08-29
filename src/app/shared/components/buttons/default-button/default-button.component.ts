@@ -12,6 +12,7 @@ export class DefaultButtonComponent {
   @Input() stretch = false
   @Input() loading = false
   @Input() type: 'primary' | 'secondary' | 'warn' = 'primary'
+  @Input() disabled = false
 
   @Output() clickEvent = new EventEmitter<void>()
 
