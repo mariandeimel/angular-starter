@@ -18,6 +18,40 @@ export class PaginationComponent {
     return Math.ceil(this.totalCount / this.itemsPerPage)
   }
 
+  get upperBound(): number {
+    if (this.currentPage * this.itemsPerPage > this.totalCount) return this.totalCount
+    return this.currentPage * this.itemsPerPage
+  }
+
+  get displayedPages(): (number | null)[] {
+    const total = this.totalPages;
+    const current = this.currentPage;
+    const boundary = 2;  // Anzahl der Seiten um die aktuelle Seite
+
+    const array: (number | null)[] = [];
+
+    // Erste Seite und ggf. Auslassungspunkte
+    array.push(1);
+    if (current - boundary > 2) {
+      array.push(null); // für "..."
+    }
+
+    // Seiten um die aktuelle Seite
+    for (let i = Math.max(2, current - boundary); i <= Math.min(total - 1, current + boundary); i++) {
+      array.push(i);
+    }
+
+    // Letzte Seite und ggf. Auslassungspunkte
+    if (current + boundary < total - 1) {
+      array.push(null); // für "..."
+    }
+    if (total > 1) {
+      array.push(total);
+    }
+
+    return array;
+  }
+
   changePage(newPage: number): void {
     if (newPage > 0 && newPage <= this.totalPages) {
       this.currentPage = newPage;

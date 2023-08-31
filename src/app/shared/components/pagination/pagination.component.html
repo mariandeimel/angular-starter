@@ -2,33 +2,38 @@
 
   <span class="font-normal text-center sm:text-left text--backdrop">Showing
     <span class="font-semibold text--primary">
-      {{ (currentPage - 1) * itemsPerPage + 1 }}-{{ currentPage * itemsPerPage }}
+      {{ (currentPage - 1) * itemsPerPage + 1 }}-{{ upperBound }}
     </span>
     of
     <span class="font-semibold text--primary">{{ totalCount }}</span>
   </span>
 
-  <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm mx-auto sm:mx-0 mb-2 sm:mb-0" aria-label="Pagination">
+  <nav class="isolate inline-flex mx-auto sm:mx-0 mb-2 sm:mb-0" aria-label="Pagination">
 
     <a href="#" (click)="changePage(currentPage - 1); $event.preventDefault()"
-      class="relative inline-flex items-center rounded-l-md px-4 py-2 text--primary ring-1 ring-inset dark:ring-zinc-700 dark:hover:bg-zinc-700 ring-zinc-300 hover:bg-zinc-300 focus:z-20 focus:outline-offset-0">
+      class="mr-1 relative inline-flex items-center rounded-lg px-4 py-2 text--primary dark:hover:bg-zinc-700 hover:bg-zinc-200">
       <span class="sr-only">Previous</span>
       <i class="fa-solid fa-angle-left"></i>
     </a>
 
-    <ng-container *ngFor="let page of [].constructor(totalPages) ; let i = index">
-      <a href="#" (click)="changePage(i + 1); $event.preventDefault()"
-        class="relative inline-flex items-center px-4 py-2 font-semibold" [ngClass]="{
-          'text--constrast-light bg--primary border-2 dark:border-zinc-300 border-zinc-700': currentPage === i + 1,
-          'ring-1 ring-inset dark:ring-zinc-700 dark:hover:bg-zinc-700 ring-zinc-300 hover:bg-zinc-300': currentPage !== i + 1
-        }">{{ i + 1 }}</a>
+    <ng-container *ngFor="let page of displayedPages">
+      <ng-container *ngIf="page !== null">
+        <a href="#" (click)="changePage(page); $event.preventDefault()"
+          class="relative inline-flex items-center px-4 py-2 font-semibold rounded-lg mr-1" [ngClass]="{
+            'text--constrast-light bg--primary border-2 dark:border-indigo-400 border-indigo-500': currentPage === page,
+            'dark:hover:bg-zinc-700 hover:bg-zinc-200': currentPage !== page
+          }">{{ page }}</a>
+      </ng-container>
+      <ng-container *ngIf="page === null">
+        <span class="px-4 py-2">...</span>
+      </ng-container>
     </ng-container>
 
     <a href="#" (click)="changePage(currentPage + 1); $event.preventDefault()"
-      class="relative inline-flex items-center rounded-r-md px-4 py-2 text--primary ring-1 ring-inset dark:ring-zinc-700 dark:hover:bg-zinc-700 ring-zinc-300 hover:bg-zinc-300 focus:z-20 focus:outline-offset-0">
+      class="relative inline-flex items-center rounded-lg px-4 py-2 text--primary dark:hover:bg-zinc-700 hover:bg-zinc-200">
       <span class="sr-only">Next</span>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-    
+
   </nav>
 </div>
