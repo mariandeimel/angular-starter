@@ -10,17 +10,17 @@ import { CommonModule } from '@angular/common';
 })
 export class PaginationComponent {
   @Input({ required: true }) totalCount: number = 0
-  @Input({ required: true }) itemsPerPage: number = 20
+  @Input({ required: true }) pageSize: number = 20
   @Input({ required: true }) currentPage: number = 1
   @Output() pageChangeEvent = new EventEmitter<number>()
 
   get totalPages(): number {
-    return Math.ceil(this.totalCount / this.itemsPerPage)
+    return Math.ceil(this.totalCount / this.pageSize)
   }
 
   get upperBound(): number {
-    if (this.currentPage * this.itemsPerPage > this.totalCount) return this.totalCount
-    return this.currentPage * this.itemsPerPage
+    if (this.currentPage * this.pageSize > this.totalCount) return this.totalCount
+    return this.currentPage * this.pageSize
   }
 
   get displayedPages(): (number | null)[] {

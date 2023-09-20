@@ -1,34 +1,28 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
+import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { MatAutocompleteModule, _MatAutocompleteBase } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-input-field',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatAutocompleteModule],
   templateUrl: './input-field.component.html',
-  styleUrls: ['./input-field.component.scss'],
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => InputFieldComponent), multi: true }],
 })
 export class InputFieldComponent {
   @Input() id: string = ''
   @Input() placeholder: string = ''
   @Input() type: string = 'text'
-  @Input() step: string | null = null
-  @Input() list: string | null = null
 
   @Input() showIcon: boolean = false
   @Input() direction: string = 'right'
 
   @Input() disabled: boolean = false
-  @Input() autocomplete: boolean = true
 
   @Output() typing = new EventEmitter<string>()
-  @Output() blurEvent = new EventEmitter<void>()
-  @Output() focusEvent = new EventEmitter<void>()
 
-
-  @Input() value: string | number | undefined = ''
+  value: string = ''
 
   // Function to call when the input changes.
   onChange = (value: string) => { }
@@ -56,12 +50,6 @@ export class InputFieldComponent {
   onInput(value: string) {
     this.value = value
     this.onChange(value)
-    this.onTouched()
     this.typing.emit(value)
   }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled
-  }
 }
-

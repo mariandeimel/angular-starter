@@ -8,7 +8,6 @@ import { HeadlineOneComponent } from '@shared/components/headlines/headline-one/
   standalone: true,
   imports: [CommonModule, RouterOutlet, HeadlineOneComponent],
   templateUrl: './layout-auth.component.html',
-  styleUrls: ['./layout-auth.component.scss']
 })
 export class LayoutAuthComponent {
 

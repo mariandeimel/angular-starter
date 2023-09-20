@@ -21,7 +21,7 @@ export abstract class ApiService<T> {
     let queryParts = []
 
     if (options.page) queryParts.push(`page=${options.page}`)
-    if (options.itemsPerPage) queryParts.push(`pageSize=${options.itemsPerPage}`)
+    if (options.pageSize) queryParts.push(`pageSize=${options.pageSize}`)
     if (options.search) queryParts.push(`search=${encodeURIComponent(options.search)}`)
 
     if (options.order) {

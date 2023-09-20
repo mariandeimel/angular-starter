@@ -2,7 +2,7 @@
 
   <span class="font-normal text-center sm:text-left text--backdrop">Showing
     <span class="font-semibold text--primary">
-      {{ (currentPage - 1) * itemsPerPage + 1 }}-{{ upperBound }}
+      {{ (currentPage - 1) * pageSize + 1 }}-{{ upperBound }}
     </span>
     of
     <span class="font-semibold text--primary">{{ totalCount }}</span>
@@ -20,7 +20,7 @@
       <ng-container *ngIf="page !== null">
         <a href="#" (click)="changePage(page); $event.preventDefault()"
           class="relative inline-flex items-center px-4 py-2 font-semibold rounded-lg mr-1" [ngClass]="{
-            'text--constrast-light bg--primary border-2 dark:border-indigo-400 border-indigo-500': currentPage === page,
+            'text--constrast-light bg--primary border-2 dark:border-orange-300 border-orange-300': currentPage === page,
             'dark:hover:bg-zinc-700 hover:bg-zinc-200': currentPage !== page
           }">{{ page }}</a>
       </ng-container>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CheckboxComponent } from '@shared/components/form-fields/checkbox/checkbox.component';
 import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
@@ -15,8 +15,6 @@ export interface TableConfig {
   standalone: true,
   imports: [CommonModule, CheckboxComponent, MatSortModule],
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TableComponent {
 
@@ -42,15 +40,15 @@ export class TableComponent {
     for (let item of this.data) {
       this.selectedItems.mutate(values => values[item.id] = event)
     }
-    this.updateParent()
+    this.emitSelectedIds()
   }
 
   selectItem(event: boolean, id: string) {
     this.selectedItems.mutate(values => values[id] = event)
-    this.updateParent()
+    this.emitSelectedIds()
   }
 
-  updateParent() {
+  emitSelectedIds() {
     const selectedItems = this.selectedItems()
     let selectedIds = Object.keys(selectedItems).filter(id => selectedItems[id])
     this.allSelected.set(selectedIds.length === this.data.length)

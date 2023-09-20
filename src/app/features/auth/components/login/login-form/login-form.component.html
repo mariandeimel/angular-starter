@@ -6,5 +6,5 @@
     <i (click)="hidePassword.set(!hidePassword())" class="fas {{iconClass()}} flex items-center justify-center w-6 h-6 transition duration-75 text--backdrop group-hover:text-zinc-950 dark:group-hover:text-zinc-50"></i>
   </app-input-field>
 
-  <app-button-gradient-outline [stretch]="true" [loading]="loading" (clickEvent)="submit()">Continue with credentials</app-button-gradient-outline>
+  <app-gradient-button [stretch]="true" [loading]="loading" (clickEvent)="submit()">Continue with credentials</app-gradient-button>
 </form>

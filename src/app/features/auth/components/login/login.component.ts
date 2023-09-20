@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardComponent } from '@shared/components/cards/card/card.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { AuthFacade } from '@features/auth/auth.facade';
 import { User } from '@features/auth/interfaces/user';
-import { AlertComponent } from '@shared/components/alerts/alert/alert.component';
 import { Observable } from 'rxjs';
+import { CardComponent } from '@shared/components/card/card.component';
+import { AlertComponent } from '@shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-login',

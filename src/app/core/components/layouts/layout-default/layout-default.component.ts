@@ -7,7 +7,6 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterOutlet],
   templateUrl: './layout-default.component.html',
-  styleUrls: ['./layout-default.component.scss']
 })
 export class LayoutDefaultComponent {
 

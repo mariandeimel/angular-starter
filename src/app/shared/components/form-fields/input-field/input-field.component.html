@@ -4,9 +4,5 @@
     <ng-content></ng-content>
   </div>
 
-  <input #inputField
-    class="bg-white border border--zinc text--contrast-light rounded-md block w-full p-2.5 placeholder-zinc-500"
-    name="{{id}}" type="{{type}}" [value]="value" [placeholder]="placeholder" [autocomplete]="autocomplete"
-    [disabled]="disabled" (input)="onInput(inputField.value)" [step]="type === 'number' ? step ?? '1' : null"
-    [attr.list]="list ? list : null" (blur)="blurEvent.emit()" (focus)="focusEvent.emit()">
+  <input #inputField class="input__text-field" name="{{id}}" type="{{type}}" [value]="value" [placeholder]="placeholder" [disabled]="disabled" (input)="onInput(inputField.value)">
 </div>
