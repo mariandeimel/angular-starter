@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
+import { CommonModule } from '@angular/common'
 
 @Component({
   selector: 'app-headline-one',
@@ -8,5 +8,4 @@ import { CommonModule } from '@angular/common';
   templateUrl: './headline-one.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeadlineOneComponent {
-}
+export class HeadlineOneComponent {}

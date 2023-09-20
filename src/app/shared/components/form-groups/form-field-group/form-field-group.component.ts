@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core'
+import { CommonModule } from '@angular/common'
 
 @Component({
   selector: 'app-form-field-group',
@@ -7,6 +7,4 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './form-field-group.component.html',
 })
-export class FormFieldGroupComponent {
-
-}
+export class FormFieldGroupComponent {}

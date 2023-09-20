@@ -1,12 +1,16 @@
-<nav class="border-b border--zinc bg--primary text--primary">
-  <div class="flex flex-wrap items-center mx-auto h-14 px-4">
-
-    <button *ngIf="sidebarVisible; else showCloseButton" (click)="toggleSidebar()" aria-label="Open sidebar">
-      <i class="fa-solid fa-arrow-right-from-bracket fa-rotate-180 text--hover-highlight text-lg"></i>
+<nav class="border--zinc bg--primary text--primary border-b">
+  <div class="mx-auto flex h-14 flex-wrap items-center px-4">
+    <button
+      *ngIf="sidebarVisible; else showCloseButton"
+      (click)="toggleSidebar()"
+      aria-label="Open sidebar">
+      <i
+        class="fa-solid fa-arrow-right-from-bracket fa-rotate-180 text--hover-highlight text-lg"></i>
     </button>
     <ng-template #showCloseButton>
       <button aria-label="Close sidebar" (click)="toggleSidebar()">
-        <i class="fa-solid fa-arrow-right-from-bracket text--hover-highlight text-lg"></i>
+        <i
+          class="fa-solid fa-arrow-right-from-bracket text--hover-highlight text-lg"></i>
       </button>
     </ng-template>
 

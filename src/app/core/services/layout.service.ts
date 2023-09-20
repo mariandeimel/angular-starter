@@ -1,14 +1,13 @@
-import { Injectable, WritableSignal, signal } from '@angular/core';
-import { Layout } from '@core/enums/layout';
+import { Injectable, WritableSignal, signal } from '@angular/core'
+import { Layout } from '@core/enums/layout'
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LayoutService {
-
-  layout = signal(Layout.DEFAULT);
+  layout = signal(Layout.DEFAULT)
 
   setLayout(layout: Layout) {
-    this.layout.set(layout);
+    this.layout.set(layout)
   }
 }

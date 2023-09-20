@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DefaultButtonComponent } from '@shared/components/buttons/default-button/default-button.component';
-import { SearchFieldComponent } from '@shared/components/form-fields/search-field/search-field.component';
+import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { DefaultButtonComponent } from '@shared/components/buttons/default-button/default-button.component'
+import { SearchFieldComponent } from '@shared/components/form-fields/search-field/search-field.component'
 
 @Component({
   selector: 'app-table-header',

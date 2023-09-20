@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
+import { CommonModule } from '@angular/common'
 
 @Component({
   selector: 'app-label',
@@ -10,5 +10,5 @@ import { CommonModule } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LabelComponent {
-  @Input({required: true}) for: string = '';
+  @Input({ required: true }) for: string = ''
 }

@@ -1,6 +1,15 @@
-<input #searchInput class="input__text-field" [matAutocomplete]="auto" (input)="onInput(searchInput.value)">
-<mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="optionSelected($event.option.value)">
-  <mat-option *ngIf="!filteredOptions.length" [value]="null">No results found</mat-option>
+<input
+  #searchInput
+  class="input__text-field"
+  [matAutocomplete]="auto"
+  (input)="onInput(searchInput.value)" />
+<mat-autocomplete
+  autoActiveFirstOption
+  #auto="matAutocomplete"
+  (optionSelected)="optionSelected($event.option.value)">
+  <mat-option *ngIf="!filteredOptions.length" [value]="null"
+    >No results found</mat-option
+  >
   <mat-option *ngFor="let option of filteredOptions" [value]="option">
     {{ option[displayProperty] }}
   </mat-option>

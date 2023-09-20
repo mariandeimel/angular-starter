@@ -16,7 +16,8 @@ $zinc: (
   700: #3f3f46,
   800: #27272a,
   900: #18181b,
-  contrast: (50: rgba(black, 0.87),
+  contrast: (
+    50: rgba(black, 0.87),
     100: rgba(black, 0.87),
     200: rgba(black, 0.87),
     300: rgba(black, 0.87),
@@ -26,7 +27,7 @@ $zinc: (
     700: white,
     800: rgba(white, 0.87),
     900: rgba(white, 0.87),
-  )
+  ),
 );
 
 // Define the Sky color map.
@@ -41,17 +42,19 @@ $sky: (
   700: #4338ca,
   800: #3730a3,
   900: #312e81,
-  contrast: (50: rgba(black, 0.87),
+  contrast: (
+    50: rgba(black, 0.87),
     100: rgba(black, 0.87),
     200: rgba(black, 0.87),
     300: rgba(black, 0.87),
     400: rgba(black, 0.87),
-    500: white, // contrast color for default Sky
+    500: white,
+    // contrast color for default Sky
     600: white,
     700: white,
     800: rgba(white, 0.87),
     900: rgba(white, 0.87),
-  )
+  ),
 );
 
 // Define the Red color map (warn).
@@ -66,24 +69,35 @@ $red: (
   700: #b91c1c,
   800: #991b1b,
   900: #7f1d1d,
-  contrast: (50: rgba(black, 0.87),
+  contrast: (
+    50: rgba(black, 0.87),
     100: rgba(black, 0.87),
     200: rgba(black, 0.87),
     300: rgba(black, 0.87),
     400: rgba(black, 0.87),
-    500: white, // contrast color for default Red
+    500: white,
+    // contrast color for default Red
     600: white,
     700: white,
     800: rgba(white, 0.87),
     900: rgba(white, 0.87),
-  )
+  ),
 );
 
 $primary-palette: mat.define-palette($zinc, 500);
 $secondary-palette: mat.define-palette($sky, 500);
 $warn-palette: mat.define-palette($red, 500);
 
-$smartflow-theme: mat.define-light-theme((color: (primary: $primary-palette, accent: $secondary-palette, warn: $warn-palette), typography: mat.define-typography-config(), ));
+$smartflow-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $primary-palette,
+      accent: $secondary-palette,
+      warn: $warn-palette,
+    ),
+    typography: mat.define-typography-config(),
+  )
+);
 // $smartflow-theme: mat.define-dark-theme((color: (primary: $primary-palette, accent: $secondary-palette, warn: $warn-palette), typography: mat.define-typography-config(), ));
 
 @include mat.all-component-themes($smartflow-theme);

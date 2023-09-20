@@ -1,12 +1,25 @@
 <app-content-wrapper>
-  <app-table-header [disabledDelete]="selectedIds().length < 1" (searchEvent)="onSearch($event)"
-    (searchEvent)="onSearch($event)" (addEvent)="onAdd()"></app-table-header>
+  <app-table-header
+    [disabledDelete]="selectedIds().length < 1"
+    (searchEvent)="onSearch($event)"
+    (searchEvent)="onSearch($event)"
+    (addEvent)="onAdd()"></app-table-header>
 
-  <app-table [hidden]="loading$ | async" [config]="tableConfig" [data]="(data$ | async) ?? []" [path]="detailPath"
-    (sortChangedEvent)="onSort($event)" (selectChangeEvent)="onSelected($event)"></app-table>
+  <app-table
+    [hidden]="loading$ | async"
+    [config]="tableConfig"
+    [data]="(data$ | async) ?? []"
+    [path]="detailPath"
+    (sortChangedEvent)="onSort($event)"
+    (selectChangeEvent)="onSelected($event)"></app-table>
 
-  <app-skeleton-table *ngIf="(loading$ | async)" [numberItems]="apiOptions().pageSize"></app-skeleton-table>
+  <app-skeleton-table
+    *ngIf="loading$ | async"
+    [numberItems]="apiOptions().pageSize"></app-skeleton-table>
 
-  <app-pagination [currentPage]="apiOptions().page" [pageSize]="apiOptions().pageSize"
-    [totalCount]="(totalCount$ | async) ?? 0" (pageChangeEvent)="onPageChange($event)"></app-pagination>
+  <app-pagination
+    [currentPage]="apiOptions().page"
+    [pageSize]="apiOptions().pageSize"
+    [totalCount]="(totalCount$ | async) ?? 0"
+    (pageChangeEvent)="onPageChange($event)"></app-pagination>
 </app-content-wrapper>

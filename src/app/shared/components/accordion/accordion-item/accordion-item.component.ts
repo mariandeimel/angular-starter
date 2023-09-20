@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { IconButtonComponent } from '@shared/components/buttons/icon-button/icon-button.component';
+import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { IconButtonComponent } from '@shared/components/buttons/icon-button/icon-button.component'
 
 @Component({
   selector: 'app-accordion-item',

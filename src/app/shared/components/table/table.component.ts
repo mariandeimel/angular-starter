@@ -1,8 +1,15 @@
-import { Component, EventEmitter, Input, Output, ViewChild, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CheckboxComponent } from '@shared/components/form-fields/checkbox/checkbox.component';
-import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
-import { Router } from '@angular/router';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+  signal,
+} from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { CheckboxComponent } from '@shared/components/form-fields/checkbox/checkbox.component'
+import { MatSort, MatSortModule, Sort } from '@angular/material/sort'
+import { Router } from '@angular/router'
 
 export interface TableConfig {
   property: string
@@ -17,7 +24,6 @@ export interface TableConfig {
   templateUrl: './table.component.html',
 })
 export class TableComponent {
-
   @Input({ required: true }) config!: TableConfig[]
   @Input({ required: true }) data: any[] = []
   @Input({ required: true }) path!: string
@@ -30,7 +36,7 @@ export class TableComponent {
 
   @ViewChild(MatSort) sort!: MatSort
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   onSort(event: Sort) {
     this.sortChangedEvent.emit(event)
@@ -38,13 +44,13 @@ export class TableComponent {
 
   selectAll(event: boolean) {
     for (let item of this.data) {
-      this.selectedItems.mutate(values => values[item.id] = event)
+      this.selectedItems.mutate(values => (values[item.id] = event))
     }
     this.emitSelectedIds()
   }
 
   selectItem(event: boolean, id: string) {
-    this.selectedItems.mutate(values => values[id] = event)
+    this.selectedItems.mutate(values => (values[id] = event))
     this.emitSelectedIds()
   }
 
@@ -60,4 +66,3 @@ export class TableComponent {
     this.router.navigate([`/${this.path}/${id}`])
   }
 }
-

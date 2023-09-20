@@ -1,39 +1,50 @@
-<div class="text-sm flex flex-col-reverse sm:flex-1 sm:flex-row sm:items-center sm:justify-between pt-4">
-
-  <span class="font-normal text-center sm:text-left text--backdrop">Showing
-    <span class="font-semibold text--primary">
+<div
+  class="flex flex-col-reverse pt-4 text-sm sm:flex-1 sm:flex-row sm:items-center sm:justify-between">
+  <span class="text--backdrop text-center font-normal sm:text-left"
+    >Showing
+    <span class="text--primary font-semibold">
       {{ (currentPage - 1) * pageSize + 1 }}-{{ upperBound }}
     </span>
     of
-    <span class="font-semibold text--primary">{{ totalCount }}</span>
+    <span class="text--primary font-semibold">{{ totalCount }}</span>
   </span>
 
-  <nav class="isolate inline-flex mx-auto sm:mx-0 mb-2 sm:mb-0" aria-label="Pagination">
-
-    <a href="#" (click)="changePage(currentPage - 1); $event.preventDefault()"
-      class="mr-1 relative inline-flex items-center rounded-lg px-4 py-2 text--primary dark:hover:bg-zinc-700 hover:bg-zinc-200">
+  <nav
+    class="isolate mx-auto mb-2 inline-flex sm:mx-0 sm:mb-0"
+    aria-label="Pagination">
+    <a
+      href="#"
+      (click)="changePage(currentPage - 1); $event.preventDefault()"
+      class="text--primary relative mr-1 inline-flex items-center rounded-lg px-4 py-2 hover:bg-zinc-200 dark:hover:bg-zinc-700">
       <span class="sr-only">Previous</span>
       <i class="fa-solid fa-angle-left"></i>
     </a>
 
     <ng-container *ngFor="let page of displayedPages">
       <ng-container *ngIf="page !== null">
-        <a href="#" (click)="changePage(page); $event.preventDefault()"
-          class="relative inline-flex items-center px-4 py-2 font-semibold rounded-lg mr-1" [ngClass]="{
-            'text--constrast-light bg--primary border-2 dark:border-orange-300 border-orange-300': currentPage === page,
-            'dark:hover:bg-zinc-700 hover:bg-zinc-200': currentPage !== page
-          }">{{ page }}</a>
+        <a
+          href="#"
+          (click)="changePage(page); $event.preventDefault()"
+          class="relative mr-1 inline-flex items-center rounded-lg px-4 py-2 font-semibold"
+          [ngClass]="{
+            'text--constrast-light bg--primary border-2 border-orange-300 dark:border-orange-300':
+              currentPage === page,
+            'hover:bg-zinc-200 dark:hover:bg-zinc-700': currentPage !== page
+          }"
+          >{{ page }}</a
+        >
       </ng-container>
       <ng-container *ngIf="page === null">
         <span class="px-4 py-2">...</span>
       </ng-container>
     </ng-container>
 
-    <a href="#" (click)="changePage(currentPage + 1); $event.preventDefault()"
-      class="relative inline-flex items-center rounded-lg px-4 py-2 text--primary dark:hover:bg-zinc-700 hover:bg-zinc-200">
+    <a
+      href="#"
+      (click)="changePage(currentPage + 1); $event.preventDefault()"
+      class="text--primary relative inline-flex items-center rounded-lg px-4 py-2 hover:bg-zinc-200 dark:hover:bg-zinc-700">
       <span class="sr-only">Next</span>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-
   </nav>
 </div>

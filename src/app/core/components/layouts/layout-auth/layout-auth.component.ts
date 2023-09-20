@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { HeadlineOneComponent } from '@shared/components/headlines/headline-one/headline-one.component';
+import { Component } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { RouterOutlet } from '@angular/router'
+import { HeadlineOneComponent } from '@shared/components/headlines/headline-one/headline-one.component'
 
 @Component({
   selector: 'app-layout-auth',
@@ -9,6 +9,4 @@ import { HeadlineOneComponent } from '@shared/components/headlines/headline-one/
   imports: [CommonModule, RouterOutlet, HeadlineOneComponent],
   templateUrl: './layout-auth.component.html',
 })
-export class LayoutAuthComponent {
-
-}
+export class LayoutAuthComponent {}

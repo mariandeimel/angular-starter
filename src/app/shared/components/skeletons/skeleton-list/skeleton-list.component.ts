@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BaseSkeletonComponent } from '../base-skeleton.component';
+import { Component } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { BaseSkeletonComponent } from '../base-skeleton.component'
 
 @Component({
   selector: 'app-skeleton-list',
@@ -8,5 +8,4 @@ import { BaseSkeletonComponent } from '../base-skeleton.component';
   imports: [CommonModule],
   templateUrl: './skeleton-list.component.html',
 })
-export class SkeletonListComponent extends BaseSkeletonComponent {
-}
+export class SkeletonListComponent extends BaseSkeletonComponent {}

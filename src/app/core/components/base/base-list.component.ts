@@ -9,18 +9,29 @@ import { ContentWrapperComponent } from '@shared/components/content-wrapper/cont
 import { PaginationComponent } from '@shared/components/pagination/pagination.component'
 import { SkeletonTableComponent } from '@shared/components/skeletons/skeleton-table/skeleton-table.component'
 import { TableHeaderComponent } from '@shared/components/table/table-header/table-header.component'
-import { TableComponent, TableConfig } from '@shared/components/table/table.component'
+import {
+  TableComponent,
+  TableConfig,
+} from '@shared/components/table/table.component'
 import { Observable } from 'rxjs'
-
 
 @Component({
   selector: 'app-base-list',
   templateUrl: 'base-list.component.html',
-  imports: [CommonModule, TableComponent, PaginationComponent, SkeletonTableComponent, ContentWrapperComponent, TableHeaderComponent, MatDialogModule],
+  imports: [
+    CommonModule,
+    TableComponent,
+    PaginationComponent,
+    SkeletonTableComponent,
+    ContentWrapperComponent,
+    TableHeaderComponent,
+    MatDialogModule,
+  ],
   standalone: true,
 })
-export abstract class BaseListComponent<T extends Identifiable> implements OnInit {
-
+export abstract class BaseListComponent<T extends Identifiable>
+  implements OnInit
+{
   abstract readonly detailPath: string
 
   loading$?: Observable<boolean>
@@ -33,8 +44,13 @@ export abstract class BaseListComponent<T extends Identifiable> implements OnIni
 
   tableConfig: TableConfig[] = []
 
-  constructor(private facade: FacadesService<T>, public dialog: MatDialog) {
-    effect(() => this.facade.fetch(this.apiOptions()), { allowSignalWrites: true })
+  constructor(
+    private facade: FacadesService<T>,
+    public dialog: MatDialog
+  ) {
+    effect(() => this.facade.fetch(this.apiOptions()), {
+      allowSignalWrites: true,
+    })
   }
 
   ngOnInit(): void {
@@ -44,11 +60,16 @@ export abstract class BaseListComponent<T extends Identifiable> implements OnIni
     this.totalCount$ = this.facade.getTotalCount$()
   }
 
-  onPageChange = (page: number): void => this.apiOptions.mutate((options) => options.page = page)
+  onPageChange = (page: number): void =>
+    this.apiOptions.mutate(options => (options.page = page))
 
-  onSearch = (search: string): void => this.apiOptions.mutate((options) => options.search = search)
+  onSearch = (search: string): void =>
+    this.apiOptions.mutate(options => (options.search = search))
 
-  onSort = (sort: Sort): void => this.apiOptions.mutate((options) => options.order = { [sort.active]: sort.direction })
+  onSort = (sort: Sort): void =>
+    this.apiOptions.mutate(
+      options => (options.order = { [sort.active]: sort.direction })
+    )
 
   onSelected = (event: any) => this.selectedIds.set(event)
 

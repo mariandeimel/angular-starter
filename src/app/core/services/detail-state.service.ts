@@ -1,5 +1,5 @@
-import { Injectable, signal } from '@angular/core';
-import { toObservable } from '@angular/core/rxjs-interop';
+import { Injectable, signal } from '@angular/core'
+import { toObservable } from '@angular/core/rxjs-interop'
 
 @Injectable({ providedIn: 'root' })
 export class DetailStateService<T> {

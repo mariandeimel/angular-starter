@@ -1,8 +1,12 @@
-<app-alert class="text-center" *ngIf="error$ | async"><span>{{error$ | async}}</span></app-alert>
+<app-alert class="text-center" *ngIf="error$ | async"
+  ><span>{{ error$ | async }}</span></app-alert
+>
 
 <app-card class="flex">
-  <div class="font-medium mb-4">
+  <div class="mb-4 font-medium">
     <span>Sign in</span>
   </div>
-  <app-login-form [loading]="(loading$ | async) ?? false" (submitEvent)="authenticate($event)"></app-login-form>
+  <app-login-form
+    [loading]="(loading$ | async) ?? false"
+    (submitEvent)="authenticate($event)"></app-login-form>
 </app-card>

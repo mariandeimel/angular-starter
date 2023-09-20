@@ -6,7 +6,6 @@ import { appGuard } from '@core/guards/app.guard'
 import { authGuard } from '@core/guards/auth.guard'
 import { setLayout } from '@core/resolvers/layout.resolver'
 
-
 export const APP_ROUTES: Routes = [
   {
     path: '',
@@ -19,14 +18,15 @@ export const APP_ROUTES: Routes = [
     resolve: { layout: setLayout(Layout.ADMIN) },
     data: { breadcrumb: 'Dashboard' },
     component: DashboardComponent,
-    canActivate: [appGuard]
+    canActivate: [appGuard],
   },
   {
     path: 'auth',
     title: 'Authentication',
     resolve: { layout: setLayout(Layout.AUTH) },
-    loadChildren: () => import('./features/auth/auth.routes').then(m => m.AUTH_ROUTES),
-    canActivate: [authGuard]
+    loadChildren: () =>
+      import('./features/auth/auth.routes').then(m => m.AUTH_ROUTES),
+    canActivate: [authGuard],
   },
   {
     path: '**',

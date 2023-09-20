@@ -1,4 +1,7 @@
-<input [id]="identifier" type="checkbox"
-  class="w-4 h-4 appearance-none rounded-sm bg--primary border-0 ring-1 dark:ring-zinc-700 ring-zinc-300 ring-offset-0 focus:ring-1 focus:ring-offset-0 shadow-none focus:accent-indigo-500"
-  (click)="toggleChecked()" [checked]="checked">
-<label for="{{identifier}}" class="sr-only">checkbox</label>
+<input
+  [id]="identifier"
+  type="checkbox"
+  class="bg--primary h-4 w-4 appearance-none rounded-sm border-0 shadow-none ring-1 ring-zinc-300 ring-offset-0 focus:accent-indigo-500 focus:ring-1 focus:ring-offset-0 dark:ring-zinc-700"
+  (click)="toggleChecked()"
+  [checked]="checked" />
+<label for="{{ identifier }}" class="sr-only">checkbox</label>

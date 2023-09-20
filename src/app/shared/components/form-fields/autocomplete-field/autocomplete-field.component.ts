@@ -1,26 +1,29 @@
-import { CommonModule } from '@angular/common';
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { InputFieldComponent } from '../input-field/input-field.component';
-import { FacadesService } from '@core/services/facade.service';
-import { Identifiable } from '@core/interfaces/identifiable';
-import { Subject, debounceTime } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { CommonModule } from '@angular/common'
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core'
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import { InputFieldComponent } from '../input-field/input-field.component'
+import { FacadesService } from '@core/services/facade.service'
+import { Identifiable } from '@core/interfaces/identifiable'
+import { Subject, debounceTime } from 'rxjs'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 
 @Component({
   standalone: true,
   selector: 'app-autocomplete-field',
   templateUrl: './autocomplete-field.component.html',
   imports: [CommonModule, MatAutocompleteModule, InputFieldComponent],
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: AutocompleteComponent,
-    multi: true
-  }]
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: AutocompleteComponent,
+      multi: true,
+    },
+  ],
 })
-export class AutocompleteComponent<T extends Identifiable> implements OnInit, ControlValueAccessor {
-
+export class AutocompleteComponent<T extends Identifiable>
+  implements OnInit, ControlValueAccessor
+{
   @ViewChild('searchInput') searchInput: ElementRef<HTMLInputElement>
 
   filteredOptions: any[] = []
@@ -32,9 +35,11 @@ export class AutocompleteComponent<T extends Identifiable> implements OnInit, Co
   @Input({ required: true }) facade: FacadesService<T>
 
   constructor() {
-    this.searchInputChanged.pipe(takeUntilDestroyed(), debounceTime(500)).subscribe(search => {
-      this.facade.fetch({ page: 1, pageSize: 50, search: search })
-    })
+    this.searchInputChanged
+      .pipe(takeUntilDestroyed(), debounceTime(500))
+      .subscribe(search => {
+        this.facade.fetch({ page: 1, pageSize: 50, search: search })
+      })
   }
 
   ngOnInit(): void {
@@ -54,16 +59,18 @@ export class AutocompleteComponent<T extends Identifiable> implements OnInit, Co
     }
 
     if (value !== null && this.searchInput) {
-
       // Finde die Option mit der gegebenen ID
-      const selectedOption = this.filteredOptions.find(option => option['@id'] === value)
+      const selectedOption = this.filteredOptions.find(
+        option => option['@id'] === value
+      )
 
       // Wenn die Option gefunden wird, setze den Namen im Textfeld
       if (selectedOption) {
-        this.searchInput.nativeElement.value = selectedOption[this.displayProperty]
+        this.searchInput.nativeElement.value =
+          selectedOption[this.displayProperty]
       } else {
         // Andernfalls setze das Textfeld auf einen leeren Wert oder einen Standardwert
-        this.searchInput.nativeElement.value = '';
+        this.searchInput.nativeElement.value = ''
       }
     }
   }
@@ -93,7 +100,7 @@ export class AutocompleteComponent<T extends Identifiable> implements OnInit, Co
 
       if (this.lastValue === null) return
       this.writeValue(this.lastValue)
-      this.lastValue = null  // Setzen Sie den Wert zurück, um ihn nicht erneut zu verwenden
+      this.lastValue = null // Setzen Sie den Wert zurück, um ihn nicht erneut zu verwenden
     })
   }
 

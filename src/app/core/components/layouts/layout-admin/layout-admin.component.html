@@ -1,9 +1,16 @@
 <mat-drawer-container class="h-full" autosize>
-  <mat-drawer #drawer [mode]="drawerMode()" (closedStart)="this.closedSidebar()">
+  <mat-drawer
+    #drawer
+    [mode]="drawerMode()"
+    (closedStart)="this.closedSidebar()">
     <app-sidebar (logoutEvent)="logout()"></app-sidebar>
   </mat-drawer>
   <mat-drawer-content class="bg--primary text--primary">
-    <app-navbar [sidebarVisible]="sidebarVisible()" (sidebarToggleEvent)="drawer.toggle(); sidebarVisible.set($event)"></app-navbar>
+    <app-navbar
+      [sidebarVisible]="sidebarVisible()"
+      (sidebarToggleEvent)="
+        drawer.toggle(); sidebarVisible.set($event)
+      "></app-navbar>
     <ng-content></ng-content>
   </mat-drawer-content>
 </mat-drawer-container>

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { IconButtonComponent } from '@shared/components/buttons/icon-button/icon-button.component';
+import { Component } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { IconButtonComponent } from '@shared/components/buttons/icon-button/icon-button.component'
 
 @Component({
   selector: 'app-form-group-header',
@@ -8,6 +8,4 @@ import { IconButtonComponent } from '@shared/components/buttons/icon-button/icon
   imports: [CommonModule, IconButtonComponent],
   templateUrl: './form-group-header.component.html',
 })
-export class FormGroupHeaderComponent {
-
-}
+export class FormGroupHeaderComponent {}

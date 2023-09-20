@@ -1,7 +1,11 @@
-<div role="status" class=" divide-zinc-300 animate-pulse dark:divide-zinc-700 grid 2xl:grid-cols-2 grid-cols-1 gap-4">
-  <div *ngFor="let i of [].constructor(numberItems)" class="flex items-center justify-between px-6 py-6 border border--zinc rounded-lg">
-    <div class="h-2.5 bg--contrast-light rounded-full w-12"></div>
-    <div class="h-2.5 bg--contrast-light rounded-full w-24"></div>
+<div
+  role="status"
+  class="grid animate-pulse grid-cols-1 gap-4 divide-zinc-300 dark:divide-zinc-700 2xl:grid-cols-2">
+  <div
+    *ngFor="let i of [].constructor(numberItems)"
+    class="border--zinc flex items-center justify-between rounded-lg border px-6 py-6">
+    <div class="bg--contrast-light h-2.5 w-12 rounded-full"></div>
+    <div class="bg--contrast-light h-2.5 w-24 rounded-full"></div>
   </div>
   <span class="sr-only">Loading...</span>
 </div>

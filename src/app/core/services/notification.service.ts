@@ -1,15 +1,17 @@
-import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Injectable } from '@angular/core'
+import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NotificationService {
-
-  constructor(public snackBar: MatSnackBar) { }
+  constructor(public snackBar: MatSnackBar) {}
 
   showSuccess(message: string): void {
-    this.snackBar.open(message, '', {panelClass: ['success'], duration: 3000});
+    this.snackBar.open(message, '', {
+      panelClass: ['success'],
+      duration: 3000,
+    })
   }
 
   showError(message: string): void {
@@ -18,6 +20,6 @@ export class NotificationService {
       duration: 3000,
       horizontalPosition: 'right',
       verticalPosition: 'top',
-    });
+    })
   }
 }

@@ -1,6 +1,6 @@
-import { Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { PasswordResetComponent } from './components/password-reset/password-reset.component';
+import { Routes } from '@angular/router'
+import { LoginComponent } from './components/login/login.component'
+import { PasswordResetComponent } from './components/password-reset/password-reset.component'
 
 export const AUTH_ROUTES: Routes = [
   {
@@ -10,5 +10,5 @@ export const AUTH_ROUTES: Routes = [
   {
     path: 'password-reset',
     loadComponent: () => PasswordResetComponent,
-  }
+  },
 ]

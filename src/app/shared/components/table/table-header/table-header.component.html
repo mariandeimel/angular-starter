@@ -1,11 +1,23 @@
-<div class="flex justify-between items-center mb-4 space-x-2">
-
-  <div class="flex space-x-2 items-center flex-1">
-    <app-search-field *ngIf="!hideSearch" (searchEvent)="onSearch($event)"></app-search-field>
+<div class="mb-4 flex items-center justify-between space-x-2">
+  <div class="flex flex-1 items-center space-x-2">
+    <app-search-field
+      *ngIf="!hideSearch"
+      (searchEvent)="onSearch($event)"></app-search-field>
   </div>
 
   <div class="space-x-2">
-    <app-default-button *ngIf="!disabledDelete" [disabled]="disabledDelete" [type]="'warn'" (clickEvent)="onRemoveClick()">Löschen</app-default-button>
-    <app-default-button *ngIf="!hideAdd" [type]="'primary'" (clickEvent)="onAddClick()">Hinzufügen</app-default-button>
+    <app-default-button
+      *ngIf="!disabledDelete"
+      [disabled]="disabledDelete"
+      [type]="'warn'"
+      (clickEvent)="onRemoveClick()"
+      >Löschen</app-default-button
+    >
+    <app-default-button
+      *ngIf="!hideAdd"
+      [type]="'primary'"
+      (clickEvent)="onAddClick()"
+      >Hinzufügen</app-default-button
+    >
   </div>
 </div>

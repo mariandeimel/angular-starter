@@ -1,16 +1,27 @@
-import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  forwardRef,
+} from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { NG_VALUE_ACCESSOR } from '@angular/forms'
 
 @Component({
   selector: 'app-checkbox',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './checkbox.component.html',
-  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => CheckboxComponent), multi: true }],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => CheckboxComponent),
+      multi: true,
+    },
+  ],
 })
 export class CheckboxComponent {
-
   @Input({ required: true }) identifier: string
 
   @Output() valueChangeEvent = new EventEmitter<boolean>()
@@ -46,7 +57,7 @@ export class CheckboxComponent {
   }
 
   toggleChecked() {
-    this.checked = !this.checked;
+    this.checked = !this.checked
     this.valueChangeEvent.emit(this.checked)
     if (this.onTouched) {
       this.onTouched()

@@ -1,16 +1,31 @@
 <button
-  class="relative flex items-center justify-between w-full p-4 text-left rounded-t-lg border border--zinc bg--contrast-lightest hover:bg-zinc-50 dark:hover:bg-zinc-950"
-  [ngClass]="{'rounded-b-none mb-0': expanded, 'rounded-b-lg mb-2': !expanded}" (click)="toggle()">
-
+  class="border--zinc bg--contrast-lightest relative flex w-full items-center justify-between rounded-t-lg border p-4 text-left hover:bg-zinc-50 dark:hover:bg-zinc-950"
+  [ngClass]="{
+    'mb-0 rounded-b-none': expanded,
+    'mb-2 rounded-b-lg': !expanded
+  }"
+  (click)="toggle()">
   <div class="flex items-center">
     <ng-content select="[avatar]"></ng-content>
     <ng-content select="[title]"></ng-content>
   </div>
 
-  <button type="button" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-    <svg class="w-3 h-3 shrink-0" [ngClass]="expanded ? 'rotate-180' : null" aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
+  <button
+    type="button"
+    class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+    <svg
+      class="h-3 w-3 shrink-0"
+      [ngClass]="expanded ? 'rotate-180' : null"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 10 6">
+      <path
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M9 5 5 1 1 5" />
     </svg>
   </button>
 
@@ -19,9 +34,9 @@
   </app-icon-button>
 </button>
 
-
 <div [class.hidden]="!expanded">
-  <div class="px-4 pt-4 pb-2 mb-2 bg-primary border border-t-0 border--zinc rounded-b-lg"
+  <div
+    class="bg-primary border--zinc mb-2 rounded-b-lg border border-t-0 px-4 pb-2 pt-4"
     [class.border-b]="last">
     <ng-content select="[body]"></ng-content>
   </div>

@@ -1,21 +1,21 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { FormGroupComponent } from './form-group.component';
+import { FormGroupComponent } from './form-group.component'
 
 describe('FormGroupComponent', () => {
-  let component: FormGroupComponent;
-  let fixture: ComponentFixture<FormGroupComponent>;
+  let component: FormGroupComponent
+  let fixture: ComponentFixture<FormGroupComponent>
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [FormGroupComponent]
-    });
-    fixture = TestBed.createComponent(FormGroupComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+      imports: [FormGroupComponent],
+    })
+    fixture = TestBed.createComponent(FormGroupComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

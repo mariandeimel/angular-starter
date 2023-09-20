@@ -4,7 +4,6 @@ import { toObservable } from '@angular/core/rxjs-interop'
 
 @Injectable({ providedIn: 'root' })
 export class AuthState {
-
   user = signal<User | undefined>(undefined)
   loading = signal(false)
   error = signal<string | null>(null)

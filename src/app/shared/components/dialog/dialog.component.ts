@@ -1,15 +1,22 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MatDialogModule } from '@angular/material/dialog';
-import { IconButtonComponent } from '@shared/components/buttons/icon-button/icon-button.component';
-import { HeadlineTwoComponent } from '@shared/components/headlines/headline-two/headline-two.component';
-import { DefaultButtonComponent } from '@shared/components/buttons/default-button/default-button.component';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { Component, EventEmitter, Input, Output } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { MatDialogModule } from '@angular/material/dialog'
+import { IconButtonComponent } from '@shared/components/buttons/icon-button/icon-button.component'
+import { HeadlineTwoComponent } from '@shared/components/headlines/headline-two/headline-two.component'
+import { DefaultButtonComponent } from '@shared/components/buttons/default-button/default-button.component'
+import { MatProgressBarModule } from '@angular/material/progress-bar'
 
 @Component({
   selector: 'app-dialog',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, IconButtonComponent, HeadlineTwoComponent, DefaultButtonComponent, MatProgressBarModule],
+  imports: [
+    CommonModule,
+    MatDialogModule,
+    IconButtonComponent,
+    HeadlineTwoComponent,
+    DefaultButtonComponent,
+    MatProgressBarModule,
+  ],
   templateUrl: './dialog.component.html',
 })
 export class DialogComponent {

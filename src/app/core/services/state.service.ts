@@ -1,10 +1,9 @@
-import { Injectable, signal } from '@angular/core';
-import { toObservable } from '@angular/core/rxjs-interop';
-import { Identifiable } from '@core/interfaces/identifiable';
+import { Injectable, signal } from '@angular/core'
+import { toObservable } from '@angular/core/rxjs-interop'
+import { Identifiable } from '@core/interfaces/identifiable'
 
 @Injectable({ providedIn: 'root' })
 export class StateService<T extends Identifiable> {
-
   loading = signal(false)
   items = signal<T[]>([])
   totalCount = signal(0)

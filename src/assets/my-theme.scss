@@ -42,7 +42,6 @@ body {
   @apply dark:border-zinc-700;
 }
 
-
 .text--primary {
   @apply text-zinc-700;
   @apply dark:text-zinc-300;
@@ -94,5 +93,5 @@ li {
 }
 
 .input__text-field {
-  @apply bg-white dark:bg-zinc-950 border border--zinc text--contrast-light rounded-lg block w-full p-2.5 dark:placeholder-zinc-500 placeholder-zinc-500 accent-indigo-500
+  @apply border--zinc text--contrast-light block w-full rounded-lg border bg-white p-2.5 placeholder-zinc-500 accent-indigo-500 dark:bg-zinc-950 dark:placeholder-zinc-500;
 }
