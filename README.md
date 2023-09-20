@@ -1,27 +1,55 @@
-# Client
+# Angular Starter Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+A robust Angular starter kit featuring an Admin panel, Login, a default layout, and a suite of usable UI components. Enhanced with a cookie-based authentication service and state, API, and facade services that are generic and easily implementable. Perfectly styled with Tailwind for modern and responsive designs.
+Features
 
-## Development server
+    Admin Panel: Comprehensive dashboard with all the essential functionalities you need.
+    Login & Authentication: Seamless user login with cookie-based requests using the built-in Auth Service.
+    Layouts: Includes Admin, Login, and Default layouts.
+    UI Components:
+        Reactive FormFields: Easily integrate reactive forms in your applications.
+        Data Table: Display your data in a clean and structured table format.
+        Autocomplete Field: Built-in autocomplete functionality to enhance user experience.
+    Tailwind Integration: Style your app with one of the most popular CSS frameworks.
+    State, API & Facade Services:
+        Generic services to aid in state management, interacting with APIs, and establishing a facade for cleaner and more maintainable code.
+        Especially designed to work smoothly with the Data Table, lists, and autocomplete fields.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# Getting Started
 
-## Code scaffolding
+Clone the repository:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## git clone https://github.com/YOUR_USERNAME/angular-starter.git
 
-## Build
+Navigate to the project directory:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## cd angular-starter
 
-## Running unit tests
+Install the dependencies:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## npm install
 
-## Running end-to-end tests
+Run the application:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## ng serve
 
-## Further help
+Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Documentation
+
+# Services
+
+    Auth Service: Handles cookie-based authentication. 
+    State Service: Generic state management service.
+    API Service: Generic API handler service.
+    Facade Service: Clean up your component logic using the facade pattern 
+
+# Components
+
+All UI components can be found under src/app/components. This includes the Reactive FormFields, Data Table, and Autocomplete field components.
+Contributing
+
+Contributions are welcome! Please read our CONTRIBUTING.md for details on how to contribute and the process for submitting pull requests to us.
+License
+
+This project is licensed under the MIT License. See the LICENSE.md file for details.
